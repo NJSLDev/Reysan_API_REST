@@ -27,7 +27,7 @@ function crearCita(req, res, next) { // POST v1/citas?categoria_id=021abo59c96b9
     }).catch(next)
 }
 
-
+// Funcion para Obtener 1 o todas las citas
 function obtenerCitas(req, res, next) {
     if (!req.params.id) {
         // sin :id, solo enlistaremos las citas dónde su status es pendiente o aceptada
@@ -51,7 +51,7 @@ function obtenerCitas(req, res, next) {
     }
 }
 
-
+// Funcion para modificar 1 cita
 function modificarCita(req, res, next) {
     console.log("Cita a solicitar: " + req.params.id)
 

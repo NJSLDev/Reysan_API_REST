@@ -21,6 +21,7 @@ const crypto = require('crypto');                             //Importando módu
 const jwt = require('jsonwebtoken');                          //Importando módulo jsonwebtoken, pendiente de instalar.
 const secret = require('../config').secret;
 
+// creando la clase o Schema de mongoose Usuario
 const UsuarioSchema = new mongoose.Schema({                   //Definiendo el objeto UsuarioSchema con el constructor Schema.
     username: {                                                  //Definiendo cada campo con sus tipo sde datos y validaciones.
         type: String,

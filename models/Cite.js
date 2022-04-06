@@ -15,6 +15,7 @@ module.exports = Cite;
 
 const mongoose = require("mongoose");
 
+// creando la clase o Schema de mongoose Cite
 const CiteSchema = new mongoose.Schema({
     userClient: { type: mongoose.Schema.Types.ObjectId, ref:"Usuario"},
     citeDay: { type: Date, required: true },
@@ -22,6 +23,7 @@ const CiteSchema = new mongoose.Schema({
     status: { type: String, enum: ['aceptada', 'noaceptada', 'pendiente','done'] }
 }, { collection: "citas", timestamps: true });
 
+// Valores publicos de las Cites
 CiteSchema.methods.publicData = function () {
     return {
         id: this.id,

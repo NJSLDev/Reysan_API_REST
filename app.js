@@ -49,7 +49,7 @@ require('./models/Category');
 require('./models/Cite');
 
 
-// Aquí se importarán los modelos Mascota y Solicitud cuando estén listos
+// Aquí se importarán los modelos cuando estén listos
 /*********************** Mongoose Configuration *******************************/
 
 // Agregamos el código de nuestro router (routes/index.js)

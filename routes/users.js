@@ -8,6 +8,7 @@ const {
 } = require('../controllers/users')
 const auth = require('./auth');
 
+// CRUD para usuarios
 router.get('/', auth.requerido, obtenerUsuarios)
 router.get('/:id', auth.requerido, obtenerUsuarios);
 router.post('/', crearUsuario)

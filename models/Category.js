@@ -1,5 +1,5 @@
 /*
-Clase que representa el tipo de Servicio Ofrecido
+Clase que representa la categoria del tipo de Servicio Ofrecido
 
 Class Category {
         constructor(id, name, status, adminname) {
@@ -14,13 +14,14 @@ Class Category {
 
 const mongoose = require("mongoose");
 
+// creando la clase o Schema de mongoose Category
 const CategorySchema = new mongoose.Schema({
     name: { type: String, required: true },
     status: { type: String, enum: ['disponible', 'nodisponible'], required: true },
     adminId: { type: mongoose.Schema.Types.ObjectId, ref:'Usuario'}
 }, { collection:"categorys", timestamps: true })
 
-
+// Valores publicos de las categorys
 CategorySchema.methods.publicData = function () {
     return {
         id: this.id,

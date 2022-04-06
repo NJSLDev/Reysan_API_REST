@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Category = mongoose.model('Category')
 
+// Funcion para crear nuevas categorias
 function agregarCategoria(req, res, next) {
     var categoria = new Category(req.body)
     categoria.adminId = req.usuario.id
@@ -9,19 +10,21 @@ function agregarCategoria(req, res, next) {
     }).catch(next)
 }
 
+// Funcion para Obtener 1 o todas las categorias
 function obtenerCategorias(req, res, next) {
-    if (req.params.id) {
+    if (req.params.id) { // Obtener categoria por su id
         Category.findById(req.params.id)
             .populate('adminId', 'name status').then(categorias => {
                 res.send(categorias)
             }).catch(next)
-    } else {
+    } else {  // obtener todas las categorias existentes
         Category.find().then(categorias => {
             res.send(categorias)
         }).catch(next)
     }
 }
 
+// funcion para modificar una categoria
 function modificarCategoria(req, res, next) {
     console.log("Categoria a modificar: " + req.params.id) //req.param.id - Categoria en uri
 
@@ -49,7 +52,7 @@ function modificarCategoria(req, res, next) {
     }).catch(next)
 }
 
-
+// Funcion para eliminar una categoria
 function eliminarCategoria(req, res) {
     // únicamente borra a su propio categoria obteniendo el id del token
     Category.findById(req.params.id).then(categoria => {
@@ -61,7 +64,7 @@ function eliminarCategoria(req, res) {
         let idAdmin = categoria.adminId;
         console.log(" Admin creador de la categoria: " + idAdmin);
 
-        if (idUsuario == idAdmin) {
+        if (idUsuario == idAdmin) { // Si el usuario que modifica es usuario admin
             let nombreCategoria = categoria.name;
             categoria.deleteOne();
             res.status(200).send(`Categoria ${req.params.id} eliminada. ${nombreCategoria}`);

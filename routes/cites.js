@@ -7,6 +7,7 @@ const {
 } = require('../controllers/cites')
 var auth = require('./auth');
 
+// CRUD para Citas
 router.get('/', auth.requerido, obtenerCitas)
 router.get('/:id', auth.requerido, obtenerCitas)
 router.post('/', auth.requerido, crearCita)
